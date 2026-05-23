@@ -1,3 +1,3 @@
-# References — Part 1: End-to-End Mental Model
+# References — Part 2: KV Cache
 
 <!-- Add papers, blog posts, documentation, and talks here -->
