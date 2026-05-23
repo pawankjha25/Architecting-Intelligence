@@ -1,0 +1,32 @@
+{
+  "experiment_id": "E05_srtf",
+  "description": "Scheduler: srtf",
+  "config": {
+    "scheduler": "srtf"
+  },
+  "ttft_ms_mean": 10297.448959022891,
+  "ttft_ms_median": 4512.129446451507,
+  "ttft_ms_p95": 32370.263561273397,
+  "ttft_ms_p99": 37994.34581724989,
+  "ttft_ms_min": 207.00000000000003,
+  "ttft_ms_max": 38583.61610631417,
+  "tpot_ms_mean": 15.24945490235254,
+  "tpot_ms_median": 15.168539325842701,
+  "tpot_ms_p95": 15.882352941176444,
+  "tpot_ms_p99": 16.499999999999915,
+  "tpot_ms_min": 14.99999999999968,
+  "tpot_ms_max": 17.142857142857032,
+  "e2e_ms_mean": 11516.49895902289,
+  "e2e_ms_median": 5509.629446451507,
+  "e2e_ms_p95": 35040.2635612734,
+  "e2e_ms_p99": 41409.5126522414,
+  "e2e_ms_min": 315.6339247770803,
+  "e2e_ms_max": 42843.61610631416,
+  "total_requests": 200,
+  "total_output_tokens": 16254,
+  "total_input_tokens": 52815,
+  "wall_time_s": 1.3113021850585938e-05,
+  "requests_per_sec": 15252014.545454545,
+  "output_tokens_per_sec": 1239531222.1090908,
+  "input_tokens_per_sec": 4027675741.090909
+}

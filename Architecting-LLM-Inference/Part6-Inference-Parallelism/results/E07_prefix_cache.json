@@ -1,0 +1,43 @@
+{
+  "experiment_id": "E07_prefix_cache",
+  "description": "Prefix caching hit rates across workload types",
+  "config": {
+    "num_requests": 100,
+    "cache_blocks": 256,
+    "block_size": 16
+  },
+  "workload_results": [
+    {
+      "workload": "Shared system prompt",
+      "hit_rate_pct": 99.0,
+      "hits": 198,
+      "misses": 2,
+      "evictions": 69,
+      "ttft_saving_pct": 99.0
+    },
+    {
+      "workload": "Chat history (multi-turn)",
+      "hit_rate_pct": 99.0,
+      "hits": 198,
+      "misses": 2,
+      "evictions": 2576,
+      "ttft_saving_pct": 99.0
+    },
+    {
+      "workload": "RAG (retrieved docs)",
+      "hit_rate_pct": 99.0,
+      "hits": 198,
+      "misses": 2,
+      "evictions": 0,
+      "ttft_saving_pct": 99.0
+    },
+    {
+      "workload": "Random (no sharing)",
+      "hit_rate_pct": 99.0,
+      "hits": 198,
+      "misses": 2,
+      "evictions": 155,
+      "ttft_saving_pct": 99.0
+    }
+  ]
+}

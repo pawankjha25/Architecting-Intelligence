@@ -1,0 +1,32 @@
+{
+  "experiment_id": "E05_fcfs",
+  "description": "Scheduler: fcfs",
+  "config": {
+    "scheduler": "fcfs"
+  },
+  "ttft_ms_mean": 29912.05645902289,
+  "ttft_ms_median": 30838.65400731538,
+  "ttft_ms_p95": 55447.43011165125,
+  "ttft_ms_p99": 57059.294435663774,
+  "ttft_ms_min": 207.00000000000003,
+  "ttft_ms_max": 57383.36004049578,
+  "tpot_ms_mean": 15.249454902352582,
+  "tpot_ms_median": 15.168539325842692,
+  "tpot_ms_p95": 15.882352941176652,
+  "tpot_ms_p99": 16.499999999999915,
+  "tpot_ms_min": 14.99999999999968,
+  "tpot_ms_max": 17.142857142857792,
+  "e2e_ms_mean": 31131.10645902289,
+  "e2e_ms_median": 32210.73276292049,
+  "e2e_ms_p95": 56357.90955332719,
+  "e2e_ms_p99": 58223.36004049578,
+  "e2e_ms_min": 1342.42653953242,
+  "e2e_ms_max": 59415.60241903373,
+  "total_requests": 200,
+  "total_output_tokens": 16254,
+  "total_input_tokens": 52815,
+  "wall_time_s": 1.4066696166992188e-05,
+  "requests_per_sec": 14217979.661016949,
+  "output_tokens_per_sec": 1155495207.0508475,
+  "input_tokens_per_sec": 3754612978.983051
+}

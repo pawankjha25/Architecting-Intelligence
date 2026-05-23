@@ -1,0 +1,33 @@
+{
+  "experiment_id": "E04_continuous_batching_sim",
+  "description": "Continuous batching \u2014 iteration-level scheduling simulation",
+  "config": {
+    "max_batch_size": 8,
+    "arrival_rate": 20.0
+  },
+  "ttft_ms_mean": 46296.87298819358,
+  "ttft_ms_median": 45481.521183162215,
+  "ttft_ms_p95": 93991.18229130395,
+  "ttft_ms_p99": 97615.96828278487,
+  "ttft_ms_min": 178.5,
+  "ttft_ms_max": 97615.96828278487,
+  "tpot_ms_mean": 138.26864795658054,
+  "tpot_ms_median": 135.608514492751,
+  "tpot_ms_p95": 152.6071428571478,
+  "tpot_ms_p99": 487.7500000000001,
+  "tpot_ms_min": 87.13924050633236,
+  "tpot_ms_max": 487.7500000000001,
+  "e2e_ms_mean": 54664.44798819366,
+  "e2e_ms_median": 57165.80321405521,
+  "e2e_ms_p95": 101605.96828278503,
+  "e2e_ms_p99": 102887.94057666174,
+  "e2e_ms_min": 1154.8203663595962,
+  "e2e_ms_max": 102887.94057666174,
+  "total_requests": 100,
+  "total_output_tokens": 6347,
+  "total_input_tokens": 25456,
+  "wall_time_s": 0.0006959438323974609,
+  "requests_per_sec": 143689.75676601575,
+  "output_tokens_per_sec": 9119988.86193902,
+  "input_tokens_per_sec": 36577664.48235697
+}

@@ -1,0 +1,131 @@
+{
+  "experiment_id": "E08_kv_offload",
+  "description": "KV cache offloading \u2014 GPU\u2192CPU\u2192NVMe latency tradeoffs",
+  "config": {
+    "num_requests": 200,
+    "prompt_mean": 512,
+    "output_mean": 256
+  },
+  "results": [
+    {
+      "config": "No offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-8B",
+      "cpu_offload_gb": 0.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 183099,
+      "total_kv_tokens": 183099,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "No offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-70B",
+      "cpu_offload_gb": 0.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 73236,
+      "total_kv_tokens": 73236,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "4GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-8B",
+      "cpu_offload_gb": 4.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 183099,
+      "total_kv_tokens": 213616,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "4GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-70B",
+      "cpu_offload_gb": 4.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 73236,
+      "total_kv_tokens": 85443,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "8GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-8B",
+      "cpu_offload_gb": 8.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 183099,
+      "total_kv_tokens": 244134,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "8GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-70B",
+      "cpu_offload_gb": 8.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 73236,
+      "total_kv_tokens": 97650,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "16GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-8B",
+      "cpu_offload_gb": 16.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 183099,
+      "total_kv_tokens": 305169,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "16GB CPU offload",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-70B",
+      "cpu_offload_gb": 16.0,
+      "nvme_offload_gb": 0.0,
+      "gpu_kv_tokens": 73236,
+      "total_kv_tokens": 122064,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "8GB CPU + 8GB NVMe",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-8B",
+      "cpu_offload_gb": 8.0,
+      "nvme_offload_gb": 8.0,
+      "gpu_kv_tokens": 183099,
+      "total_kv_tokens": 305169,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    },
+    {
+      "config": "8GB CPU + 8GB NVMe",
+      "hardware": "RTX 3090 + NVMe",
+      "model": "Llama-3.1-70B",
+      "cpu_offload_gb": 8.0,
+      "nvme_offload_gb": 8.0,
+      "gpu_kv_tokens": 73236,
+      "total_kv_tokens": 122064,
+      "completed_requests": 200,
+      "throughput_tok_s": 66.7,
+      "avg_offload_penalty_ms": 0.0
+    }
+  ]
+}

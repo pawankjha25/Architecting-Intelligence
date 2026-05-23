@@ -1,14 +1,19 @@
 # Architecting LLM Infrastructure
 
-Platforms for training, fine-tuning, evaluation, and serving—data pipelines, orchestration, and MLOps for LLMs.
+Platform and cluster design for running LLMs at scale: orchestration, networking, storage, observability, and reliability patterns for production AI systems.
 
 ## Planned topics
 
-- Training and fine-tuning platforms
-- Experiment tracking and evaluation harnesses
-- Model registry and deployment pipelines
-- Multi-region and multi-tenant serving
+<!-- Add parts and links as the series is developed -->
 
-## Status
+- Cluster topology and GPU scheduling
+- Model registries and artifact storage
+- Serving meshes, gateways, and autoscaling
+- Monitoring, tracing, and SLOs for AI workloads
+- Security, tenancy, and compliance
 
-<!-- TODO: Add parts and content structure as the series is defined -->
+## Assets
+
+- `diagrams/` — Platform and deployment architecture
+- `code/` — Infrastructure-as-code and reference configs
+- `references.md` — Industry patterns and open-source projects

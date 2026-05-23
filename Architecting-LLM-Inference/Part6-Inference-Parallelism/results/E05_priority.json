@@ -1,0 +1,32 @@
+{
+  "experiment_id": "E05_priority",
+  "description": "Scheduler: priority",
+  "config": {
+    "scheduler": "priority"
+  },
+  "ttft_ms_mean": 28254.436459022887,
+  "ttft_ms_median": 30201.89705558291,
+  "ttft_ms_p95": 53758.53900553758,
+  "ttft_ms_p99": 55991.36004049577,
+  "ttft_ms_min": 207.00000000000003,
+  "ttft_ms_max": 56002.85500658153,
+  "tpot_ms_mean": 15.24945490235258,
+  "tpot_ms_median": 15.168539325842701,
+  "tpot_ms_p95": 15.882352941176237,
+  "tpot_ms_p99": 16.499999999999915,
+  "tpot_ms_min": 14.99999999999968,
+  "tpot_ms_max": 17.142857142857792,
+  "e2e_ms_mean": 29473.486459022886,
+  "e2e_ms_median": 31405.84147756268,
+  "e2e_ms_p95": 55108.76402045883,
+  "e2e_ms_p99": 56992.85500658152,
+  "e2e_ms_min": 1315.42653953242,
+  "e2e_ms_max": 58023.60241903371,
+  "total_requests": 200,
+  "total_output_tokens": 16254,
+  "total_input_tokens": 52815,
+  "wall_time_s": 1.5020370483398438e-05,
+  "requests_per_sec": 13315250.793650793,
+  "output_tokens_per_sec": 1082130432.0,
+  "input_tokens_per_sec": 3516224853.3333335
+}

@@ -1,12 +1,12 @@
 # Shared Assets
 
-Reusable branding and media used across series and publications.
+Reusable media and templates across all Architecting Intelligence series.
 
 | Folder | Purpose |
 |--------|---------|
-| [logos/](./logos/) | Logos and brand marks |
-| [diagrams/](./diagrams/) | Cross-series diagram templates and exports |
-| [templates/](./templates/) | Slide, article, and notebook templates |
-| [images/](./images/) | Stock and shared imagery |
+| [logos](./logos/) | Brand marks and series icons |
+| [diagrams](./diagrams/) | Cross-series diagram components and style guides |
+| [templates](./templates/) | Article, slide, and notebook templates |
+| [images](./images/) | Stock figures, thumbnails, and common illustrations |
 
-Keep assets versioned and named consistently (`series-topic-v1.png`).
+Keep assets versioned and named consistently (e.g. `series-part-description-v1.png`).

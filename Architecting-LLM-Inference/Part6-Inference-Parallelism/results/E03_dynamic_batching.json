@@ -1,0 +1,47 @@
+{
+  "experiment_id": "E03_dynamic_batching",
+  "description": "Dynamic batching \u2014 wait window vs latency/throughput tradeoff",
+  "config": {
+    "arrival_rate": 20.0,
+    "num_requests": 100,
+    "output_tokens": 64
+  },
+  "window_results": [
+    {
+      "wait_window_ms": 0,
+      "ttft_ms_mean": 17719.4,
+      "ttft_ms_p99": 24338.7,
+      "tpot_ms_mean": 960.9,
+      "e2e_ms_mean": 78257.0,
+      "output_tokens_per_sec": 10253455.2,
+      "avg_batch_size": 63.1
+    },
+    {
+      "wait_window_ms": 10,
+      "ttft_ms_mean": 17746.9,
+      "ttft_ms_p99": 24368.7,
+      "tpot_ms_mean": 960.9,
+      "e2e_ms_mean": 78284.5,
+      "output_tokens_per_sec": 10253455.2,
+      "avg_batch_size": 63.1
+    },
+    {
+      "wait_window_ms": 50,
+      "ttft_ms_mean": 19837.5,
+      "ttft_ms_p99": 28407.6,
+      "tpot_ms_mean": 901.2,
+      "e2e_ms_mean": 76611.9,
+      "output_tokens_per_sec": 10938690.1,
+      "avg_batch_size": 59.1
+    },
+    {
+      "wait_window_ms": 100,
+      "ttft_ms_mean": 11659.9,
+      "ttft_ms_p99": 84837.0,
+      "tpot_ms_mean": 1144.7,
+      "e2e_ms_mean": 83775.1,
+      "output_tokens_per_sec": 10720265.8,
+      "avg_batch_size": 75.1
+    }
+  ]
+}

@@ -1,14 +1,20 @@
 # Architecting AI Compute
 
-GPUs, TPUs, interconnects, memory hierarchies, and the economics of training and inference at scale.
+Deep dives into AI compute: GPUs and TPUs, memory hierarchies, kernels, profiling, and hardware-aware system design for training and inference.
 
 ## Planned topics
 
-- Hardware stacks and accelerators
-- Cluster topology and networking
-- Cost modeling and capacity planning
-- Kernel fusion and compiler stacks
+<!-- Add parts and links as the series is developed -->
 
-## Status
+- Accelerator architecture and memory bandwidth
+- CUDA/Triton kernels and operator fusion
+- Mixed-precision and numerical stability
+- Multi-GPU communication (NCCL, collectives)
+- Cost and utilization optimization
 
-<!-- TODO: Add parts and content structure as the series is defined -->
+## Assets
+
+- `diagrams/` — Hardware and data-flow diagrams
+- `notebooks/` — Profiling and micro-benchmark notebooks
+- `code/` — Kernel and benchmark examples
+- `references.md` — Papers, vendor docs, and tooling links
