@@ -25,8 +25,7 @@ python -m vllm.entrypoints.openai.api_server \
   --model "$MODEL" \
   --max-model-len "$MAX_MODEL_LEN" \
   --dtype float16 \
-  --port "$PORT" \
-  --disable-log-requests &
+  --port "$PORT" &
 
 SERVER_PID=$!
 echo "  Server PID: $SERVER_PID"
@@ -43,34 +42,14 @@ done
 
 # ── Step 2: Run benchmark ─────────────────────────────────────────────────────
 echo ""
-echo "[2/3] Running benchmark (ShareGPT-style workload)..."
+echo "[2/3] Running benchmark (synthetic ShareGPT-style workload)..."
 
-# vLLM's built-in benchmark
-python -m vllm.benchmarks.benchmark_serving \
-  --backend openai \
+python phase3_single_gpu/e09_benchmark_client.py \
   --base-url "http://localhost:$PORT" \
   --model "$MODEL" \
-  --dataset-name sharegpt \
-  --num-prompts 200 \
-  --request-rate 10 \
-  --save-result \
-  --result-dir "$RESULTS_DIR" \
-  --result-filename "baseline_rps10.json"
-
-# Vary request rate
-for RPS in 1 5 10 20 50; do
-  echo "  Testing request_rate=$RPS req/s..."
-  python -m vllm.benchmarks.benchmark_serving \
-    --backend openai \
-    --base-url "http://localhost:$PORT" \
-    --model "$MODEL" \
-    --dataset-name sharegpt \
-    --num-prompts 100 \
-    --request-rate "$RPS" \
-    --save-result \
-    --result-dir "$RESULTS_DIR" \
-    --result-filename "baseline_rps${RPS}.json"
-done
+  --num-prompts 100 \
+  --request-rates 1 5 10 20 50 \
+  --result-dir "$RESULTS_DIR"
 
 # ── Step 3: GPU memory snapshot ───────────────────────────────────────────────
 echo ""
