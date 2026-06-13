@@ -27,7 +27,7 @@ PORT = 8000
 RESULTS_DIR = Path("results/e10_paged_attention")
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-BLOCK_SIZES = [8, 16, 32]
+BLOCK_SIZES = [16, 32, 64]  # block_size=8 not supported in vLLM V1 engine
 CONCURRENCY_LEVELS = [1, 8, 32, 64, 128]
 
 
