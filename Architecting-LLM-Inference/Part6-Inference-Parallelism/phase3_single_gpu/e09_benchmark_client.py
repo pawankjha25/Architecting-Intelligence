@@ -3,6 +3,7 @@ E09 — Benchmark Client
 =======================
 Sends concurrent requests to a running vLLM server, measures
 TTFT, TPOT, E2E latency, and throughput at varying request rates.
+Also captures live GPU utilization and memory usage via pynvml.
 """
 
 import asyncio
@@ -13,6 +14,13 @@ import os
 import argparse
 import random
 import statistics
+import threading
+
+try:
+    import pynvml
+    _PYNVML_AVAILABLE = True
+except ImportError:
+    _PYNVML_AVAILABLE = False
 
 # ── Synthetic workload (ShareGPT-style length distribution) ───────────────────
 PROMPT_TEMPLATES = [
@@ -51,6 +59,68 @@ def generate_requests(n: int, prompt_len_mean=256, prompt_len_std=128,
             "max_tokens": output_len,
         })
     return reqs
+
+
+# ── GPU Monitor ───────────────────────────────────────────────────────────────
+
+class GPUMonitor:
+    """
+    Background thread that polls GPU utilization + memory every second.
+    Summarizes into mean/peak stats to attach to benchmark results.
+    Falls back gracefully if pynvml is not available.
+    """
+
+    def __init__(self, gpu_index: int = 0, interval: float = 1.0):
+        self.interval = interval
+        self.samples = []
+        self._stop = threading.Event()
+        self._available = _PYNVML_AVAILABLE
+        if self._available:
+            try:
+                pynvml.nvmlInit()
+                self._handle = pynvml.nvmlDeviceGetHandleByIndex(gpu_index)
+                name_bytes = pynvml.nvmlDeviceGetName(self._handle)
+                self.gpu_name = name_bytes.decode() if isinstance(name_bytes, bytes) else name_bytes
+            except Exception:
+                self._available = False
+                self.gpu_name = "unknown"
+        else:
+            self.gpu_name = "unknown (pynvml not installed)"
+
+    def start(self):
+        if self._available:
+            self._thread = threading.Thread(target=self._poll, daemon=True)
+            self._thread.start()
+
+    def _poll(self):
+        while not self._stop.is_set():
+            try:
+                util = pynvml.nvmlDeviceGetUtilizationRates(self._handle)
+                mem  = pynvml.nvmlDeviceGetMemoryInfo(self._handle)
+                self.samples.append({
+                    "gpu_util_pct": util.gpu,
+                    "mem_used_gb":  round(mem.used / 1e9, 2),
+                    "mem_total_gb": round(mem.total / 1e9, 2),
+                })
+            except Exception:
+                pass
+            self._stop.wait(self.interval)
+
+    def stop(self) -> dict:
+        self._stop.set()
+        if not self._available or not self.samples:
+            return {"gpu_monitor": "unavailable"}
+        gpu_utils = [s["gpu_util_pct"] for s in self.samples]
+        mem_used  = [s["mem_used_gb"]  for s in self.samples]
+        return {
+            "gpu_name":           self.gpu_name,
+            "gpu_util_mean_pct":  round(statistics.mean(gpu_utils), 1),
+            "gpu_util_peak_pct":  max(gpu_utils),
+            "mem_used_mean_gb":   round(statistics.mean(mem_used), 2),
+            "mem_used_peak_gb":   max(mem_used),
+            "mem_total_gb":       self.samples[0]["mem_total_gb"],
+            "num_samples":        len(self.samples),
+        }
 
 
 # ── Single streaming request ───────────────────────────────────────────────────
@@ -111,25 +181,21 @@ async def send_request(session: aiohttp.ClientSession, base_url: str,
 # ── Rate-limited sender ────────────────────────────────────────────────────────
 
 async def run_benchmark(base_url: str, model: str, requests: list[dict],
-                        request_rate: float) -> list[dict]:
-    """Send requests at given rate (req/s), collect metrics."""
+                        request_rate: float) -> tuple[list[dict], dict]:
+    """Send requests at given rate (req/s), collect metrics + GPU stats."""
     connector = aiohttp.TCPConnector(limit=512)
     timeout = aiohttp.ClientTimeout(total=300)
 
-    results = []
     tasks = []
+    monitor = GPUMonitor()
+    monitor.start()
 
     async with aiohttp.ClientSession(connector=connector, timeout=timeout) as session:
         for i, req in enumerate(requests):
-            # Schedule request at the right time
             target_time = i / request_rate
-            now = time.perf_counter()
-            start = now  # relative to loop start tracked externally
-
             task = asyncio.create_task(send_request(session, base_url, model, req))
             tasks.append(task)
 
-            # Sleep until next request should be sent
             if i < len(requests) - 1:
                 next_target = (i + 1) / request_rate
                 sleep_time = next_target - target_time
@@ -138,7 +204,8 @@ async def run_benchmark(base_url: str, model: str, requests: list[dict],
 
         results = await asyncio.gather(*tasks)
 
-    return list(results)
+    gpu_stats = monitor.stop()
+    return list(results), gpu_stats
 
 
 # ── Summarize ─────────────────────────────────────────────────────────────────
@@ -191,18 +258,22 @@ async def main():
 
     all_results = []
     print(f"\n{'Rate (req/s)':>12} {'Tok/s':>8} {'TTFT_mean':>10} "
-          f"{'TTFT_p99':>10} {'TPOT_mean':>10} {'E2E_p99':>10}")
-    print("-" * 65)
+          f"{'TTFT_p99':>10} {'TPOT_mean':>10} {'E2E_p99':>10} {'GPU%':>8} {'Mem(GB)':>9}")
+    print("-" * 85)
 
     for rate in args.request_rates:
         print(f"  Running rate={rate} req/s ...", flush=True)
-        results = await run_benchmark(args.base_url, args.model, requests, rate)
+        results, gpu_stats = await run_benchmark(args.base_url, args.model, requests, rate)
         summary = summarize(results, rate)
+        summary["gpu"] = gpu_stats
         all_results.append(summary)
 
+        gpu_util = gpu_stats.get("gpu_util_mean_pct", "n/a")
+        gpu_mem  = gpu_stats.get("mem_used_peak_gb", "n/a")
         print(f"{rate:>12} {summary['output_tokens_per_sec']:>8.0f} "
               f"{summary['ttft_ms_mean']:>10.0f} {summary['ttft_ms_p99']:>10.0f} "
-              f"{summary['tpot_ms_mean']:>10.0f} {summary['e2e_ms_p99']:>10.0f}")
+              f"{summary['tpot_ms_mean']:>10.0f} {summary['e2e_ms_p99']:>10.0f} "
+              f"  GPU={gpu_util}% mem={gpu_mem}GB")
 
         # Save per-rate result
         with open(f"{args.result_dir}/baseline_rps{int(rate)}.json", "w") as f:
