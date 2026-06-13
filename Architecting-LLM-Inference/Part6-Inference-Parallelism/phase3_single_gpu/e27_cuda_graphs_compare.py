@@ -118,6 +118,26 @@ def main():
 
     sim_results = simulate_cuda_graph_benefit()
 
+    # Save simulation results as JSON
+    import os
+    os.makedirs("results/e27_cuda_graphs", exist_ok=True)
+    sim_output = {
+        "experiment_id": "E27_cuda_graphs_simulation",
+        "description": "Analytical CUDA Graphs speedup model by batch size",
+        "model_params": {
+            "launch_latency_us": 5.0,
+            "num_ops_per_step": 200,
+            "compute_per_token_us": 150.0,
+            "graph_replay_us": 10.0,
+        },
+        "batch_size_sweep": sim_results,
+    }
+    import json
+    sim_path = "results/e27_cuda_graphs/E27_simulation.json"
+    with open(sim_path, "w") as f:
+        json.dump(sim_output, f, indent=2)
+    print(f"\nSimulation results saved → {sim_path}")
+
     if args.results_dir:
         parse_vllm_results(args.results_dir)
 
