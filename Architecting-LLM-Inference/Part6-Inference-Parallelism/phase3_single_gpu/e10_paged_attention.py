@@ -33,13 +33,14 @@ CONCURRENCY_LEVELS = [1, 8, 32, 64, 128]
 
 def start_vllm_server(block_size: int = 16, extra_args: list = None) -> subprocess.Popen:
     cmd = [
-        "python", "-m", "vllm.entrypoints.openai.api_server",
+        "python3", "-m", "vllm.entrypoints.openai.api_server",
         "--model", MODEL,
-        "--max-model-len", "8192",
+        "--max-model-len", "4096",
         "--dtype", "float16",
+        "--gpu-memory-utilization", "0.85",
+        "--enforce-eager",
         "--port", str(PORT),
         "--block-size", str(block_size),
-        "--disable-log-requests",
     ]
     if extra_args:
         cmd.extend(extra_args)
