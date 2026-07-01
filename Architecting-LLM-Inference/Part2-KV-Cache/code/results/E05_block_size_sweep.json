@@ -1,0 +1,52 @@
+[
+  {
+    "block_size": 8,
+    "total_blocks": 2500,
+    "rejections": 0,
+    "rejection_rate_pct": 0.0,
+    "avg_internal_frag_tokens": 82.01333333333334,
+    "avg_occupancy_pct": 54.083999999999996,
+    "avg_block_table_entries": 1352.1,
+    "max_internal_frag_per_seq": 7
+  },
+  {
+    "block_size": 16,
+    "total_blocks": 1250,
+    "rejections": 0,
+    "rejection_rate_pct": 0.0,
+    "avg_internal_frag_tokens": 161.37333333333333,
+    "avg_occupancy_pct": 54.480799999999995,
+    "avg_block_table_entries": 681.01,
+    "max_internal_frag_per_seq": 15
+  },
+  {
+    "block_size": 32,
+    "total_blocks": 625,
+    "rejections": 0,
+    "rejection_rate_pct": 0.0,
+    "avg_internal_frag_tokens": 328.7866666666667,
+    "avg_occupancy_pct": 55.317866666666674,
+    "avg_block_table_entries": 345.7366666666667,
+    "max_internal_frag_per_seq": 31
+  },
+  {
+    "block_size": 64,
+    "total_blocks": 312,
+    "rejections": 0,
+    "rejection_rate_pct": 0.0,
+    "avg_internal_frag_tokens": 740.4133333333333,
+    "avg_occupancy_pct": 57.46794871794872,
+    "avg_block_table_entries": 179.3,
+    "max_internal_frag_per_seq": 63
+  },
+  {
+    "block_size": 128,
+    "total_blocks": 156,
+    "rejections": 3,
+    "rejection_rate_pct": 1.0,
+    "avg_internal_frag_tokens": 1528.9633333333334,
+    "avg_occupancy_pct": 61.226495726495735,
+    "avg_block_table_entries": 95.51333333333334,
+    "max_internal_frag_per_seq": 127
+  }
+]

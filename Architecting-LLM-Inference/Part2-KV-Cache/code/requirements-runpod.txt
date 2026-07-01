@@ -1,0 +1,30 @@
+# -----------------------------------------------------------------------------
+# RunPod environment -- E05 (Phase B), E10, E11 (Phase B), E12
+# Requires Linux + CUDA (RTX 3090 or better)
+# Base image: runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
+#
+# Setup (in RunPod pod terminal):
+#   pip install -r requirements-runpod.txt
+#
+# Note: vLLM ships its own torch build. Do NOT install a separate torch first.
+# -----------------------------------------------------------------------------
+
+vllm>=0.4.2                 # PagedAttention, continuous batching, prefix caching, KV quantization
+
+# -- For E06B-E09B (manual DynamicCache manipulation) -------------------------
+# Pinned to a range known to use the key_cache/value_cache list layout that
+# gpu_cache_utils.py targets. If you install outside this range and hit
+# AttributeError on cache.key_cache, see the version-sensitivity note at the
+# top of gpu_cache_utils.py.
+torch>=2.2.0,<2.5.0
+transformers>=4.40.0,<4.46.0
+
+huggingface_hub>=0.22.0
+tokenizers>=0.19.0
+
+aiohttp>=3.9.0
+requests>=2.31.0
+
+numpy>=1.26.0
+
+tqdm>=4.66.0

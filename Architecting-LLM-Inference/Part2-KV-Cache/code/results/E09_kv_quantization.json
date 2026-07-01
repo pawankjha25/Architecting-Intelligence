@@ -1,0 +1,37 @@
+[
+  {
+    "precision": "bf16/fp16",
+    "bits": 16,
+    "bytes_per_element": 2,
+    "mse": 0.0,
+    "snr_db": Infinity
+  },
+  {
+    "precision": "fp8",
+    "bits": 8,
+    "bytes_per_element": 1,
+    "mse": 0.00012739282062417288,
+    "snr_db": 38.973487624968655
+  },
+  {
+    "precision": "int8",
+    "bits": 8,
+    "bytes_per_element": 1,
+    "mse": 0.00012739282062417288,
+    "snr_db": 38.973487624968655
+  },
+  {
+    "precision": "int4",
+    "bits": 4,
+    "bytes_per_element": 0.5,
+    "mse": 0.03709550108279002,
+    "snr_db": 14.331724741287356
+  },
+  {
+    "precision": "int2",
+    "bits": 2,
+    "bytes_per_element": 0.25,
+    "mse": 1.09380076726035,
+    "snr_db": -0.36444507682789473
+  }
+]

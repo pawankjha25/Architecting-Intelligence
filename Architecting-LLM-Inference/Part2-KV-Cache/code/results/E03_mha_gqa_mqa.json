@@ -1,0 +1,149 @@
+{
+  "bytes_per_token": [
+    {
+      "model": "gpt2",
+      "attention_type": "MHA",
+      "num_q_heads": 12,
+      "num_kv_heads": 12,
+      "kv_group_size": 1,
+      "bytes_per_token": 36864,
+      "human": "36.00 KB"
+    },
+    {
+      "model": "gpt2-xl",
+      "attention_type": "MHA",
+      "num_q_heads": 25,
+      "num_kv_heads": 25,
+      "kv_group_size": 1,
+      "bytes_per_token": 307200,
+      "human": "300.00 KB"
+    },
+    {
+      "model": "llama2-7b",
+      "attention_type": "MHA",
+      "num_q_heads": 32,
+      "num_kv_heads": 32,
+      "kv_group_size": 1,
+      "bytes_per_token": 524288,
+      "human": "512.00 KB"
+    },
+    {
+      "model": "llama3-8b",
+      "attention_type": "GQA",
+      "num_q_heads": 32,
+      "num_kv_heads": 8,
+      "kv_group_size": 4,
+      "bytes_per_token": 131072,
+      "human": "128.00 KB"
+    },
+    {
+      "model": "qwen2.5-7b",
+      "attention_type": "GQA",
+      "num_q_heads": 28,
+      "num_kv_heads": 4,
+      "kv_group_size": 7,
+      "bytes_per_token": 57344,
+      "human": "56.00 KB"
+    },
+    {
+      "model": "mistral-7b",
+      "attention_type": "GQA",
+      "num_q_heads": 32,
+      "num_kv_heads": 8,
+      "kv_group_size": 4,
+      "bytes_per_token": 131072,
+      "human": "128.00 KB"
+    },
+    {
+      "model": "mqa-hypothetical-7b",
+      "attention_type": "MQA",
+      "num_q_heads": 32,
+      "num_kv_heads": 1,
+      "kv_group_size": 32,
+      "bytes_per_token": 16384,
+      "human": "16.00 KB"
+    }
+  ],
+  "max_concurrency": [
+    {
+      "model": "gpt2",
+      "attention_type": "MHA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 85
+    },
+    {
+      "model": "gpt2-xl",
+      "attention_type": "MHA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 10
+    },
+    {
+      "model": "llama2-7b",
+      "attention_type": "MHA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 6
+    },
+    {
+      "model": "llama3-8b",
+      "attention_type": "GQA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 24
+    },
+    {
+      "model": "qwen2.5-7b",
+      "attention_type": "GQA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 54
+    },
+    {
+      "model": "mistral-7b",
+      "attention_type": "GQA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 24
+    },
+    {
+      "model": "mqa-hypothetical-7b",
+      "attention_type": "MQA",
+      "seq_len": 8192,
+      "max_concurrent_sequences": 192
+    }
+  ],
+  "group_ablation": [
+    {
+      "group_size": 1,
+      "kv_heads": 32,
+      "bytes_per_token": 524288,
+      "kv_cache_size_at_seq_len": "4.00 GB"
+    },
+    {
+      "group_size": 2,
+      "kv_heads": 16,
+      "bytes_per_token": 262144,
+      "kv_cache_size_at_seq_len": "2.00 GB"
+    },
+    {
+      "group_size": 4,
+      "kv_heads": 8,
+      "bytes_per_token": 131072,
+      "kv_cache_size_at_seq_len": "1.00 GB"
+    },
+    {
+      "group_size": 8,
+      "kv_heads": 4,
+      "bytes_per_token": 65536,
+      "kv_cache_size_at_seq_len": "512.00 MB"
+    },
+    {
+      "group_size": 16,
+      "kv_heads": 2,
+      "bytes_per_token": 32768,
+      "kv_cache_size_at_seq_len": "256.00 MB"
+    },
+    {
+      "group_size": 32,
+      "kv_heads": 1,
+      "bytes_per_token": 16384,
+      "kv_cache_size_at_seq_len": "128.00 MB"
+    }
+  ]
+}

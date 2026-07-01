@@ -1,0 +1,38 @@
+[
+  {
+    "window": 256,
+    "memory_bytes": 14680064,
+    "reduction_pct": 96.875,
+    "needle_survival_rate": 0.016
+  },
+  {
+    "window": 512,
+    "memory_bytes": 29360128,
+    "reduction_pct": 93.75,
+    "needle_survival_rate": 0.038
+  },
+  {
+    "window": 1024,
+    "memory_bytes": 58720256,
+    "reduction_pct": 87.5,
+    "needle_survival_rate": 0.11
+  },
+  {
+    "window": 2048,
+    "memory_bytes": 117440512,
+    "reduction_pct": 75.0,
+    "needle_survival_rate": 0.222
+  },
+  {
+    "window": 4096,
+    "memory_bytes": 234881024,
+    "reduction_pct": 50.0,
+    "needle_survival_rate": 0.438
+  },
+  {
+    "window": 8192,
+    "memory_bytes": 469762048,
+    "reduction_pct": 0.0,
+    "needle_survival_rate": 1.0
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "no_signal": {
+    "FIFO / sliding window": 0.113,
+    "Sink + window": 0.113,
+    "H2O-style heavy-hitter": 0.115
+  },
+  "with_importance_signal": {
+    "FIFO / sliding window": 0.113,
+    "Sink + window": 0.113,
+    "H2O-style heavy-hitter": 1.0
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "compute": {
+    "num_steps": 512,
+    "uncached_total_compute_units": 131328,
+    "cached_total_compute_units": 512.0,
+    "blowup_factor": 256.5,
+    "uncached_step_100": 100,
+    "cached_step_100": 1.0,
+    "uncached_last_step": 512,
+    "cached_last_step": 1.0
+  },
+  "memory": {
+    "model": "llama3-8b",
+    "seq_len": 4096,
+    "gpu_memory_budget": "24.00 GB",
+    "oom_at_concurrent_requests": 49,
+    "curve_sample": [
+      {
+        "concurrent_requests": 1,
+        "cumulative_kv_bytes": 536870912.0
+      },
+      {
+        "concurrent_requests": 9,
+        "cumulative_kv_bytes": 4831838208.0
+      },
+      {
+        "concurrent_requests": 17,
+        "cumulative_kv_bytes": 9126805504.0
+      },
+      {
+        "concurrent_requests": 25,
+        "cumulative_kv_bytes": 13421772800.0
+      },
+      {
+        "concurrent_requests": 33,
+        "cumulative_kv_bytes": 17716740096.0
+      },
+      {
+        "concurrent_requests": 41,
+        "cumulative_kv_bytes": 22011707392.0
+      },
+      {
+        "concurrent_requests": 49,
+        "cumulative_kv_bytes": 26306674688.0
+      },
+      {
+        "concurrent_requests": 57,
+        "cumulative_kv_bytes": 30601641984.0
+      }
+    ]
+  }
+}

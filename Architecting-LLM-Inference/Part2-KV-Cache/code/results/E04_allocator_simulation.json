@@ -1,0 +1,20 @@
+{
+  "contiguous": {
+    "allocator": "contiguous",
+    "capacity_tokens": 20000,
+    "rejections": 45,
+    "total_requests": 300,
+    "rejection_rate_pct": 15.0,
+    "avg_external_frag_pct": 60.8462865609757
+  },
+  "paged": {
+    "allocator": "paged",
+    "block_size": 16,
+    "capacity_tokens": 20000,
+    "rejections": 0,
+    "total_requests": 300,
+    "rejection_rate_pct": 0.0,
+    "avg_internal_frag_tokens": 161.37333333333333,
+    "external_fragmentation_pct": 0.0
+  }
+}

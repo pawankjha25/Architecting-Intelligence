@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------------------
+# MacBook environment -- E01-E09, Sim01 (Phase 1, 2, 3, 5)
+# Runs on Apple Silicon (MPS) or Intel CPU. Does NOT include vLLM (Linux+CUDA only).
+#
+# Setup:
+#   python3 -m venv .venv
+#   source .venv/bin/activate
+#   pip install -r requirements-mac.txt
+#
+# Note: E04, E05 (sim only), E06-E09, Sim01 need nothing beyond the Python
+# standard library -- they're pure-Python simulations. torch/transformers
+# are only needed if you run the optional Phase B real-model paths inside
+# E01, E02, E03, E11 (run_with_real_model / measure_real_models functions).
+# -----------------------------------------------------------------------------
+
+# Core ML (optional -- only needed for Phase B real-model runs)
+torch>=2.2.0
+transformers>=4.40.0
+accelerate>=0.29.0
+
+# HuggingFace utilities
+huggingface_hub>=0.22.0
+tokenizers>=0.19.0
+
+# Numerics
+numpy>=1.26.0
+
+# Utilities
+tqdm>=4.66.0

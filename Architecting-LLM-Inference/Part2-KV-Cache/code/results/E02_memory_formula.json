@@ -1,0 +1,108 @@
+{
+  "seq_len_sweep": [
+    {
+      "seq_len": 128,
+      "bytes": 7340032,
+      "human": "7.00 MB"
+    },
+    {
+      "seq_len": 512,
+      "bytes": 29360128,
+      "human": "28.00 MB"
+    },
+    {
+      "seq_len": 1024,
+      "bytes": 58720256,
+      "human": "56.00 MB"
+    },
+    {
+      "seq_len": 2048,
+      "bytes": 117440512,
+      "human": "112.00 MB"
+    },
+    {
+      "seq_len": 4096,
+      "bytes": 234881024,
+      "human": "224.00 MB"
+    },
+    {
+      "seq_len": 8192,
+      "bytes": 469762048,
+      "human": "448.00 MB"
+    },
+    {
+      "seq_len": 16384,
+      "bytes": 939524096,
+      "human": "896.00 MB"
+    }
+  ],
+  "batch_sweep": [
+    {
+      "batch_size": 1,
+      "bytes": 117440512,
+      "human": "112.00 MB"
+    },
+    {
+      "batch_size": 2,
+      "bytes": 234881024,
+      "human": "224.00 MB"
+    },
+    {
+      "batch_size": 4,
+      "bytes": 469762048,
+      "human": "448.00 MB"
+    },
+    {
+      "batch_size": 8,
+      "bytes": 939524096,
+      "human": "896.00 MB"
+    },
+    {
+      "batch_size": 16,
+      "bytes": 1879048192,
+      "human": "1.75 GB"
+    },
+    {
+      "batch_size": 32,
+      "bytes": 3758096384,
+      "human": "3.50 GB"
+    },
+    {
+      "batch_size": 64,
+      "bytes": 7516192768,
+      "human": "7.00 GB"
+    }
+  ],
+  "precision_sweep": [
+    {
+      "dtype": "fp32",
+      "bytes": 469762048,
+      "human": "448.00 MB",
+      "bytes_per_element": 4
+    },
+    {
+      "dtype": "fp16",
+      "bytes": 234881024,
+      "human": "224.00 MB",
+      "bytes_per_element": 2
+    },
+    {
+      "dtype": "fp8",
+      "bytes": 117440512,
+      "human": "112.00 MB",
+      "bytes_per_element": 1
+    },
+    {
+      "dtype": "int4",
+      "bytes": 58720256.0,
+      "human": "56.00 MB",
+      "bytes_per_element": 0.5
+    },
+    {
+      "dtype": "int2",
+      "bytes": 29360128.0,
+      "human": "28.00 MB",
+      "bytes_per_element": 0.25
+    }
+  ]
+}

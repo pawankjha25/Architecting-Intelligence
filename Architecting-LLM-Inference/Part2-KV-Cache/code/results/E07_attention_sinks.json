@@ -1,0 +1,32 @@
+{
+  "collapse_proxy": [
+    {
+      "num_sinks": 0,
+      "collapse_score_proxy": 0.85
+    },
+    {
+      "num_sinks": 1,
+      "collapse_score_proxy": 0.15
+    },
+    {
+      "num_sinks": 2,
+      "collapse_score_proxy": 0.09999999999999999
+    },
+    {
+      "num_sinks": 4,
+      "collapse_score_proxy": 0.06
+    },
+    {
+      "num_sinks": 8,
+      "collapse_score_proxy": 0.05
+    },
+    {
+      "num_sinks": 16,
+      "collapse_score_proxy": 0.05
+    }
+  ],
+  "needle_middle_survival": {
+    "plain_window": 0.113,
+    "window_plus_sinks": 0.113
+  }
+}
